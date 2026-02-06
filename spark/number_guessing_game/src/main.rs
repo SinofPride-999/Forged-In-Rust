@@ -111,6 +111,14 @@ fn help() {
 
 fn exit() {
     println!("Exiting...");
+    clear_screen();
+}
+
+
+fn clear_screen() {
+    // \x1B is the ESC character
+    // [2J clears the screen, [1;1H moves cursor to top-left
+    print!("\x1B[2J\x1B[1;1H");
 }
 
 fn main() {
