@@ -1,0 +1,11 @@
+Number Guessing Game
+
+    What it must do
+        - Generate a random number
+        - Accept guesses in a loop
+        - Give hints (higher/lower)
+        - Reject non-numeric input
+
+    Why
+        - Control flow + ownership with input
+        - Reinforces loops and conditions without tutorials
