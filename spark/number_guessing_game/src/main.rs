@@ -1,7 +1,8 @@
 use rand::Rng;
-use std::io;
+use std::{io, thread, time};
 
 fn display() {
+    clear_screen();
     println!("=====================");
     println!("Number Guessing Game");
     println!("=====================");
@@ -14,6 +15,8 @@ fn display() {
     println!("1. Play");
     println!("2. Help");
     println!("0. Exit");
+    println!("");
+    println!("~>");
 
     io::stdin()
         .read_line(&mut input)
@@ -33,7 +36,9 @@ fn display() {
 fn accept_guesses(&guess: &i32) {
     match guess {
         1 => {
-            println!("Playing Game");
+            println!("Loading Game ... Please wait");
+            wait(2);
+
             play()
         },
         2 => {
@@ -52,6 +57,8 @@ fn generate_random_number() -> i32 {
 }
 
 fn play() {
+    clear_screen();
+
     let mut tries_count = 0;
     let mut input = String::new();
     let mut _refined_input = 0;
@@ -62,6 +69,8 @@ fn play() {
         input.clear();
 
         println!("Guess a number between 1-100:");
+        println!("");
+        println!("~>");
 
         io::stdin()
             .read_line(&mut input)
@@ -91,7 +100,23 @@ fn play() {
 
         if _refined_input == random_generated_number {
             println!("You go it!");
+            wait(2);
             println!("Number of tries: {}", tries_count);
+
+            let mut winning_input = String::new();
+
+            println!("Would you like to play again?");
+
+            io::stdin()
+                .read_line(&mut winning_input)
+                .expect("Error reading line");
+
+            let winning_input = winning_input.trim().to_string();
+            if winning_input == "y" {
+                play();
+            } else if winning_input == "n" {
+                exit();
+            }
 
             break;
         }
@@ -107,13 +132,46 @@ fn play() {
 }
 
 fn help() {
+    clear_screen();
+    println!("=====================");
+    println!("      HELP MENU      ");
+    println!("=====================");
+    println!();
+    println!("Welcome to the Number Guessing Game!");
+    println!("Here’s how to play:");
+    println!();
+    println!("1. The computer will generate a random number between 1 and 100.");
+    println!("2. Your goal is to guess the number.");
+    println!("3. After each guess, you'll get a hint:");
+    println!("   - 'Higher than secret number' means your guess is too high.");
+    println!("   - 'Lower than secret number' means your guess is too low.");
+    println!("4. Keep guessing until you find the correct number.");
+    println!("5. You can only enter numbers between 1 and 100.");
+    println!("6. Invalid inputs (letters, symbols, or numbers out of range) will be rejected.");
+    println!();
+    println!("Press Enter to return to the main menu...");
+
+    // Wait for the user to press Enter
+    let mut input = String::new();
+    io::stdin().read_line(&mut input).expect("Failed to read line");
+
+    clear_screen();
+    display();
 }
 
 fn exit() {
     println!("Exiting...");
+    wait(3);
+
+    println!("Goodbye");
+    wait(1);
     clear_screen();
 }
 
+fn wait(secs: u64) {
+    let duration = time::Duration::from_secs(secs);
+    thread::sleep(duration);
+}
 
 fn clear_screen() {
     // \x1B is the ESC character
