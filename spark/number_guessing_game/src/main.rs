@@ -99,7 +99,7 @@ fn play() {
         tries_count += 1;
 
         if _refined_input == random_generated_number {
-            println!("You go it!");
+            println!("You got it!");
             wait(2);
             println!("Number of tries: {}", tries_count);
 
@@ -121,7 +121,7 @@ fn play() {
             break;
         }
         if _refined_input > random_generated_number {
-            println!("High than secret number");
+            println!("Higher than secret number");
             continue;
         }
         if _refined_input < random_generated_number {
