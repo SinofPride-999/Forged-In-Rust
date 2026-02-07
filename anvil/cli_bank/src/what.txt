@@ -5,7 +5,6 @@ CLI Bank Management System
         - Store accounts and balances in memory
         - Allow deposits into an account
         - Allow withdrawals with balance checks
-        - Transfer funds between two accounts
         - Reject invalid account IDs
         - Prevent withdrawals or transfers when funds are insufficient
         - Accept and process commands in a loop (create, deposit, withdraw, transfer, balance, exit)
