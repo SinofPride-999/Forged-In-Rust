@@ -1,0 +1,20 @@
+CLI Bank Management System
+
+    What it must do
+        - Create bank accounts with unique IDs
+        - Store accounts and balances in memory
+        - Allow deposits into an account
+        - Allow withdrawals with balance checks
+        - Transfer funds between two accounts
+        - Reject invalid account IDs
+        - Prevent withdrawals or transfers when funds are insufficient
+        - Accept and process commands in a loop (create, deposit, withdraw, transfer, balance, exit)
+        - Display clear success and error messages for every operation
+
+    Why
+        - Practice struct design (Account, Bank, Transaction)
+        - Reinforce ownership and borrowing when mutating shared data
+        - Use enums for command parsing and transaction types
+        - Apply error handling with Result instead of panics
+        - Build confidence designing stateful CLI applications
+        - Learn to model real-world rules with Rust’s type system
