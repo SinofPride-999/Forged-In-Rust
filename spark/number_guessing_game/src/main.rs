@@ -33,7 +33,7 @@ fn display() {
     }
 }
 
-fn accept_guesses(&guess: &i32) {
+fn accept_guesses(guess: &i32) {
     match guess {
         1 => {
             println!("Loading Game ... Please wait");
