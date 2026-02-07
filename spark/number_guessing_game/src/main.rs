@@ -61,7 +61,6 @@ fn play() {
 
     let mut tries_count = 0;
     let mut input = String::new();
-    let mut _refined_input = 0;
 
     let random_generated_number = generate_random_number();
 
@@ -76,7 +75,7 @@ fn play() {
             .read_line(&mut input)
             .expect("Failed to read input");
 
-        let _refined_input = match input.trim().parse::<i32>() {
+        let refined_input = match input.trim().parse::<i32>() {
             Ok(num) => {
                 if num < 1 || num > 100 {
                     println!("");
@@ -98,7 +97,7 @@ fn play() {
 
         tries_count += 1;
 
-        if _refined_input == random_generated_number {
+        if refined_input == random_generated_number {
             println!("You got it!");
             wait(2);
             println!("Number of tries: {}", tries_count);
@@ -120,11 +119,11 @@ fn play() {
 
             break;
         }
-        if _refined_input > random_generated_number {
+        if refined_input > random_generated_number {
             println!("Higher than secret number");
             continue;
         }
-        if _refined_input < random_generated_number {
+        if refined_input < random_generated_number {
             println!("Lower than secret number");
             continue;
         }
