@@ -1,7 +1,10 @@
 use std::io;
 
+use crate::account;
+
 use super::services::*;
 use super::utilities::*;
+use super::bank::*;
 
 pub fn hello() {
     clear_screen();
@@ -54,7 +57,8 @@ pub fn login() {
 
     if !name.is_empty() {
         let user = create_user(name.to_string());
-        menu(&user.name);
+        greet_user(&user.name);
+        menu();
     } else {
         println!("Failed to Login: Name cannot be empty");
         wait(1);
@@ -63,20 +67,57 @@ pub fn login() {
     }
 }
 
-pub fn menu(name: &str) {
-    clear_screen();
-
+pub fn greet_user(name: &str) {
     println!("Hello, {}", name);
+}
+
+pub fn menu() {
+    clear_screen();
 
     println!("\t================================================================");
     println!("\tWelcome To The Number 1 Trusted Bank In The Entire Universe of Banks");
     println!("\t================================================================");
 
     println!("\t** MENU **");
-    println!("\t");
-    println!("\t");
-    println!("\t");
-    println!("\t");
+    println!("\t1. Create Bank Account");
+    println!("\t2. Deposit");
+    println!("\t3. Withdraw");
+    println!("\t4. Get Balance");
+    println!("\t0. Exit");
+
+    let mut input = String::new();
+
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read input");
+
+    let input = input.trim();
+
+    match input {
+        "1" => {
+            let account = Bank::new();
+         },
+        "2" => {
+            clear_screen();
+            println!("How much would you like to deposit");
+
+            let mut input = String::new();
+            io::stdin()
+                .read_line(&mut input)
+                .expect("Failed to read input");
+
+            let amount = parse_into_float(input);
+
+            Bank::deposit(account_id, amount);
+         },
+        "3" => {  },
+        "4" => {  },
+        "0" => {  },
+        _ => {
+            println!("\tPlease enter a valid input in this range [0 - 2]");
+            redirect_to_home();
+        }
+    }
 }
 
 fn help() {
@@ -110,4 +151,9 @@ fn help() {
 pub fn redirect_to_home() {
     wait(2);
     home();
+}
+
+pub fn redirect_to_menu() {
+    wait(2);
+    menu();
 }

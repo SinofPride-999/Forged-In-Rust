@@ -12,6 +12,18 @@ pub fn parse(input: String) -> i32 {
     }
 }
 
+/// parse string input from the terminal to i32
+pub fn parse_into_float(input: String) -> f64 {
+    match input.trim().parse::<f64>() {
+        Ok(number) => {
+            number
+        }
+        Err(_) => {
+            0.0
+        }
+    }
+}
+
 pub fn exit() {
     println!("Exiting...");
     wait(3);

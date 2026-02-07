@@ -45,7 +45,7 @@ impl Bank {
     pub fn deposit(&mut self, account_id: u32, amount: f64) -> Result<(), String> {
         match self.accounts.get_mut(&account_id) {
             Some(account) => {
-                account.balance += amount;
+               account.balance += amount;
                 Ok(())
             }
             None => Err(format!("Account {} not found", account_id)),
