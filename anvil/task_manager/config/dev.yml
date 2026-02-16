@@ -4,4 +4,4 @@ app:
 
 database:
   url: mysql://root:darkplace@localhost/task_manager_db
-  max_connections: 10
+  max_connection: 10
