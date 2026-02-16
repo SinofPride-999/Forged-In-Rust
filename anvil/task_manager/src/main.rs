@@ -18,8 +18,12 @@ async fn main() -> Result<(), sea_orm::DbErr> {
     let cli = Cli::parse();
 
     match cli.command {
-        Commands::Add { title, description } => {
-            tasks::add_task(&db, &title, description.as_deref()).await?;
+        Commands::Add { input } => {
+            let parts: Vec<&str> = input.split('|').map(|s| s.trim()).collect();
+            let title = parts.get(0).unwrap_or(&"Untitled");
+            let description = parts.get(1).map(|s| *s);
+            
+            tasks::add_task(&db, title, description).await?;
             println!("✅ Task added!");
         }
         Commands::List => {

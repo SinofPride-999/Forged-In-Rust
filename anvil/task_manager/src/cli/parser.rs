@@ -12,20 +12,16 @@ pub struct Cli {
 pub enum Commands {
     /// Add a new task
     Add {
-        title: String,
-        description: Option<String>,
+        /// Titile and optional description seperated by a '|'
+        input: String,
     },
 
     /// List all tasks
     List,
 
     /// Mark a task as done
-    Complete {
-        id: i32,
-    },
+    Complete { id: i32 },
 
     /// Delete a task
-    Delete {
-        id: i32,
-    },
+    Delete { id: i32 },
 }
