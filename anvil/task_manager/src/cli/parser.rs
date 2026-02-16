@@ -17,7 +17,10 @@ pub enum Commands {
     },
 
     /// List all tasks
-    List,
+    List {
+        /// Optional filter: all | open | done
+        filter: Option<String>,
+    },
 
     /// Mark a task as done
     Complete { id: i32 },

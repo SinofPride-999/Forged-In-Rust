@@ -22,14 +22,23 @@ async fn main() -> Result<(), sea_orm::DbErr> {
             let parts: Vec<&str> = input.split('|').map(|s| s.trim()).collect();
             let title = parts.get(0).unwrap_or(&"Untitled");
             let description = parts.get(1).map(|s| *s);
-            
+
             tasks::add_task(&db, title, description).await?;
             println!("✅ Task added!");
         }
-        Commands::List => {
+        Commands::List { filter }=> {
             let tasks_list = tasks::list_tasks(&db).await?;
-            for t in tasks_list {
+            let filtered: Vec<_> = match filter.as_deref() {
+                Some("open") => tasks_list.into_iter().filter(|t| t.status == "open").collect(),
+                Some("done") => tasks_list.into_iter().filter(|t| t.status == "done").collect(),
+                _ => tasks_list,
+            };
+
+            for t in filtered {
                 println!("#{} [{}] {}", t.id, t.status, t.title);
+                if let Some(desc) = t.description {
+                    println!("    {}", desc);
+                }
             }
         }
         Commands::Complete { id } => {
