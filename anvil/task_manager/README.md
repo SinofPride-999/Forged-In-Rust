@@ -76,13 +76,17 @@ Replace `root` and `password` with your credentials.
 ## ▶️ Running the Application
 
 ``` bash
+cargo build
+```
+
+``` bash
 cargo run -- <command>
 ```
 
 Example:
 
 ``` bash
-cargo run -- add "Finish Rust project" "Use SeaORM and MySQL"
+cargo run -- add "Finish Rust project | Use SeaORM and MySQL"
 ```
 
 ------------------------------------------------------------------------
@@ -91,11 +95,11 @@ cargo run -- add "Finish Rust project" "Use SeaORM and MySQL"
 
 ### ➕ Add Task
 
-    add <title> | <description>
+    add "<title> | <description>"
 
 Example:
 
-    add "Build CLI App" | "Using SeaORM"
+    add "Build CLI App | Using SeaORM"
 
 ------------------------------------------------------------------------
 
@@ -105,7 +109,7 @@ Example:
 
 Examples:
 
-    list
+    list all
     list open
     list done
 
@@ -128,18 +132,6 @@ Example:
 Example:
 
     delete 2
-
-------------------------------------------------------------------------
-
-### 📊 Status Summary
-
-    status
-
-Displays:
-
--   Total tasks
--   Open tasks
--   Completed tasks
 
 ------------------------------------------------------------------------
 
