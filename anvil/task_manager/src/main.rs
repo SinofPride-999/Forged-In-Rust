@@ -1,21 +1,19 @@
+mod cli;
 mod config;
 mod db;
 mod entities;
 mod services;
-mod cli;
 
+use clap::Parser;
+use cli::{Cli, Commands};
 use config::load_config;
 use db::connection::connect;
-use cli::{Cli, Commands};
-use service::tasks_service as tasks;
-use clap::Parser;
+use services::task_service as tasks;
 
 #[tokio::main]
 async fn main() -> Result<(), sea_orm::DbErr> {
-    let settings = load_config()
-        .expect("Failed to load configuration");
-    let _db = connect(&settings)
-        .await?;
+    let settings = load_config().expect("Failed to load configuration");
+    let db = connect(&settings).await?;
 
     let cli = Cli::parse();
 

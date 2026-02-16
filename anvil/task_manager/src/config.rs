@@ -1,11 +1,13 @@
 use serde::Deserialize;
 
+#[allow(dead_code)]
 #[derive(Debug, Deserialize)]
 pub struct Settings {
     pub app: AppConfig,
     pub database: DatabaseConfig,
 }
 
+#[allow(dead_code)]
 #[derive(Debug, Deserialize)]
 pub struct AppConfig {
     pub name: String,
