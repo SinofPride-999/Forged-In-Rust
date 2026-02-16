@@ -27,4 +27,7 @@ pub enum Commands {
 
     /// Delete a task
     Delete { id: i32 },
+
+    /// Show this help message
+    ShowHelp,
 }

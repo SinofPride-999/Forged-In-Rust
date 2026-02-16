@@ -49,6 +49,15 @@ async fn main() -> Result<(), sea_orm::DbErr> {
             tasks::delete_task(&db, id).await?;
             println!("✅ Task deleted!");
         }
+        Commands::ShowHelp => {
+            println!("Task Manager CLI Help\n");
+            println!("Commands:");
+            println!("  add \"TITLE | DESCRIPTION\"    Add a new task");
+            println!("  list [all|open|done]         List tasks (default: all)");
+            println!("  complete <ID>                Mark a task as done");
+            println!("  delete <ID>                  Delete a task");
+            println!("  help                         Show this help message");
+        }
     }
 
     Ok(())

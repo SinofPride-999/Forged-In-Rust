@@ -137,9 +137,10 @@ Example:
 
 ### ❓ Help
 
-    help
+    show-help
 
 Displays all available commands.
+NB | Using `'show-help'` instead of just `'help'` because `clap` automatically generates a help command and --help flag, so when you define your own Help subcommand, it conflicts witht the built-in one. So you would get a "command name `help` is duplicated" error message.
 
 ------------------------------------------------------------------------
 
