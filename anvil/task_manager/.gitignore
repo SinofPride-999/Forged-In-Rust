@@ -1,2 +1,4 @@
 target/
 **/config/dev.yaml
+/.env
+/migration/target
