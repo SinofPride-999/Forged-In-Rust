@@ -148,12 +148,23 @@ NB | Using `'show-help'` instead of just `'help'` because `clap` automatically g
 
     src/
      ├── main.rs
-     ├── entity/
+     ├── config.rs
+     ├── errors.rs
+     ├── lib.rs
+     ├── cli/
+     │     ├── mod.rs
+     │     └── parser.rs
+     ├── db/
+     │     ├── mod.rs
+     │     └── connection.rs
+     ├── entities/
      │     ├── mod.rs
      │     └── task.rs
      ├── services/
+     │     ├── mod.rs
      │     └── task_service.rs
      └── cli/
+           ├── mod.rs
            └── parser.rs
 
 ### Architecture Layers
@@ -188,7 +199,7 @@ cargo test
 
 ## 🎯 Purpose
 
-TaskX is designed as a learning-focused yet production-structured CLI
+Task Manager is designed as a learning-focused yet production-structured CLI
 application to practice:
 
 -   Async Rust
@@ -197,9 +208,3 @@ application to practice:
 -   Clean architecture
 -   MySQL integration
 -   CLI design
-
-------------------------------------------------------------------------
-
-## 📄 License
-
-MIT License
