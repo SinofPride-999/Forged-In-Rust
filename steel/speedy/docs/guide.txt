@@ -1,0 +1,50 @@
+Speedy CLI - Quick Start Guide 🚀
+Try Out Speedy Search from Your Terminal
+
+Installation
+After cloning, the executable is here:
+path: speedy/speedy-cli/target/release/
+- Windows: speedy.exe 
+- macOS/Linux: speedy
+
+🖥️ Windows Setup
+1️⃣ Quick Test (Temporary)
+  Open Command Prompt in the repo and run:
+  command: .\speedy-cli\target\release\speedy.exe search:file "test.txt"
+
+2️⃣ Install Globally (Recommended)
+  1. Copy speedy.exe to a permanent folder (e.g., C:\Tools\).
+  2. Add to PATH:
+    - Press Win + S → "Edit environment variables" → Environment Variables.
+    - Under System variables, select Path → Edit → New.
+    - Add the folder path (e.g., C:\Tools\).
+  3.  Now run anywhere:
+    command:  speedy search:file "notes.docx"
+
+
+🍏 macOS/Linux Setup
+1️⃣ Quick Test (Temporary)
+  1. Make executable
+    command: chmod +x speedy-cli/target/release/speedy
+  
+  2. Run
+    command: ./speedy-cli/target/release/speedy search:file "config.yml"
+
+2️⃣ Install Globally (Recommended)
+  1. Copy to /usr/local/bin (requires sudo)
+    command: sudo cp speedy-cli/target/release/speedy /usr/local/bin/
+    command: sudo chmod +x /usr/local/bin/speedy
+
+  2. Verify 
+    command: speedy --help
+
+
+⚡ Pro Tips
+  - Update PATH if speedy isn’t recognized (restart terminals).
+  - Need admin rights? On macOS/Linux, use sudo.
+  - Reinstall? Overwrite the old binary with the new one.
+
+🎉 Done! Now run speedy from any folder.
+Check out the Speedy Command files filled with all the commands you can run with speedy
+
+(For developers: Use cargo build --release to rebuild the binary.)

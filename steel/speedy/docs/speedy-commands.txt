@@ -1,0 +1,105 @@
+ Speedy Command Reference
+Welcome to Speedy – a blazing fast file and folder search tool written in Rust.
+
+✅ Basic Command Structure
+speedy search:file <name> [options]
+speedy search:folder <name> [options]
+
+Core Commands
+
+| Command                     | Description                                         |
+| ------------------------------- | ------------------------------------------------ |
+| search:file <name>        | Search for a file named <name>      |
+| search:folder <name>   | Search for a folder named <name>  |
+
+🔠 Searches are case-insensitive
+
+----------------------------------------------------------------
+
+Options (Flags)
+1. --global
+  Description: Search from the root C:\ drive (Windows only).
+  Default: Without this flag, search starts from the current working directory.
+
+  Example:
+    speedy search:file todo.txt --global
+
+2. --path <custom_path>
+  Description: Manually set a custom root directory to search from.
+  Note: Overrides --global if both are used.
+
+  Example:
+    speedy search:folder project --path D:\Work
+
+
+3. --verbose
+  Description: Show all warnings, such as inaccessible folders (e.g., permission denied).
+  Tip: Great for debugging or understanding why certain files are skipped.
+
+  Example:
+    speedy search:file config.json --verbose
+
+
+4. --quiet
+  Description: Suppresses all non-essential output. Silent mode except for result or errors.
+
+  Example:
+    speedy search:folder music --quiet
+
+5. --depth <num>
+  Description: Set the maximum number of folder levels to go into during the search.
+  Default: Unlimited.
+
+  Example:
+    speedy search:file notes.txt --depth 3
+
+
+6. --notify
+  Description: Show a desktop notification when the target file/folder is found.
+
+  Example:
+    speedy search:folder assets --notify
+
+7. --threads <num>
+  Description: Manually set how many threads to use for parallel searching.
+  Default: Uses the number of logical CPU cores.
+
+  Example:
+    speedy search:file resume.pdf --threads 4
+
+8. --stop-after-match
+  Description: Stops the search as soon as the first match is found.
+  Use Case: Useful when you only want one result and want to save time.
+
+  Example:
+    speedy search:folder documents --stop-after-match
+
+9. --help
+  Description: Display this help guide with usage instructions and examples.
+
+  Example:
+    speedy --help
+
+
+
+Behind the Scenes
+  - Speedy uses parallel threads to scan directories fast (via rayon).
+  - Progress is shown via a spinner unless --quiet is used.
+  - System and noisy folders (e.g. node_modules, windows, .git, etc.) are skipped by default.
+  - If the user presses Ctrl+C, the search is safely cancelled.
+
+
+Error Tips
+| Situation                  | Suggestion                                                  |
+| -------------------------- | ----------------------------------------------------------- |
+| Missing arguments          | Run with at least 2 arguments (e.g. `search:file todo.txt`) |
+| Unknown argument           | Double-check spelling of flags                              |
+| "Permission denied" errors | Use `--verbose` to see more info                            |
+| Path doesn’t exist         | Make sure `--path` points to a valid location               |
+
+
+Example Recap
+  speedy search:file report.docx --global --notify
+  speedy search:folder src --path C:\Projects --depth 2 --threads 6
+  speedy search:file config.yml --quiet --stop-after-match
+  speedy search:file index.js --path D:\Code --verbose
