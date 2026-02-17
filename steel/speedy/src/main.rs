@@ -1,3 +1,23 @@
+//
+// Hello World! The name is Jhay and I am the original aurthor of this code.
+// Just so you know, I wrote this code months ago when I was still learning Rust
+// and experimenting with different crates and Rust features. This was me exploring,
+// trying to understand concurrency, parallelism, error handling, progress bars, notifications,
+// and more all at once. I was definitely over-ambitious and a bit messy:
+//
+// . Over-engineered functions and structs
+// . Custom error types that could probably be simplified
+// . Hardcoded directories for Windows only
+// . Manual CLI argument parsing instead of using a proper crate
+// . Lots of cloning, atomic flags, and thread synchronization
+// . 400+ lines for what is essentially a "find file/folder by name" tool
+//
+// I just thought about this code today and decided to add it to "Forged In Rust".
+// I apologize for the messy logic, but hey, it works! So I dare not tamper with it.
+// Take this as an experimental Rust playground from my past self, not production-grade code.
+//
+// Enjoy, and maybe learn from my reckless curiosity.
+
 use std::env;
 use std::error::Error;
 use std::io;
