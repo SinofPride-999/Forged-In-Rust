@@ -108,7 +108,7 @@ pub fn menu() {
 
             let amount = parse_into_float(input);
 
-            Bank::deposit(account_id, amount);
+            // Bank::deposit(account_id, amount);
          },
         "3" => {  },
         "4" => {  },
